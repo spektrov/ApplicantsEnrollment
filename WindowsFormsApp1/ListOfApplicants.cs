@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace WindowsFormsApp1
 {
-    class ListOfApplicants
+    public class ListOfApplicants
     {
         private List<Applicant> _applicants = new List<Applicant>();
 
@@ -58,12 +58,12 @@ namespace WindowsFormsApp1
 
             try
             {
-                using (var file = new FileStream("marks.xml", FileMode.OpenOrCreate))
+                using (var file = new FileStream("applicants.xml", FileMode.OpenOrCreate))
                 {
-                    if (xmlFormatter.Deserialize(file) is List<Applicant> marks)
+                    if (xmlFormatter.Deserialize(file) is List<Applicant> applicants)
                     {
-                        _applicants = marks;
-                        return marks;
+                        _applicants = applicants;
+                        return applicants;
                     }
                     return null;
                 }
@@ -81,26 +81,15 @@ namespace WindowsFormsApp1
                 return false;
             }
 
-            return false;
+            return true;
         }
 
-        public void Sort(string param)
+        public ListOfApplicants SortAlphabet()
         {
-            var applicants = new List<Applicant>();
-            switch (param)
-            {
-                case "Subject":
-                    applicants.AddRange(_applicants.OrderBy(u => u));
-                    break;
-                case "Mark":
-                    applicants.AddRange(_applicants.OrderByDescending(u => u));
-                    break;
-                default:
-                    break;
-            }
+            var applicants = new ListOfApplicants();
+            applicants.Applicants.AddRange(_applicants.OrderBy(a => a.LastName));
 
-            _applicants = applicants;
-
+            return applicants;
         }
     }
 }

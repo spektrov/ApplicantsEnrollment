@@ -1,38 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace WindowsFormsApp1
 {
-    class Applicant
+    public class Applicant
     {
         public string LastName { get; set; }
+
         public string FirstName { get; set; }
+
         public string MiddleName { get; set; }
+
         public Subject Subject1 { get; set; }
+
         public Subject Subject2 { get; set; }
+
         public Subject Subject3 { get; set; }
 
-        public double Certificate { get; set; }
+        public decimal Certificate { get; set; }
 
-        public Applicant(
-            string lastName,
-            string firstName,
-            string middleName,
-            Subject subject1,
-            Subject subject2,
-            Subject subject3, 
-            double certificate)
+        public decimal AdditionalPoint { get; set; }
+
+        public bool RuralCoefficient { get; set; }
+
+        public bool Privilege { get; set; }
+
+        public bool OnlyBudget { get; set; }
+
+        public bool OnlyContract { get; set; }
+
+        public decimal TotalMark => (decimal.Round((Subject1.Mark * Logic.Coefficient1 +
+                                                     Subject2.Mark * Logic.Coefficient2 +
+                                                     Subject3.Mark * Logic.Coefficient3 +
+                                                     (Certificate > 2 ? (100 + 10 * (Certificate - 2)) * Logic.Coefficient4 : 100) +
+                                                     AdditionalPoint) *
+                                                     (RuralCoefficient ? Logic.RuralCoefficient : 1), 3));
+
+        public override string ToString()
         {
-            LastName = lastName;
-            FirstName = firstName;
-            MiddleName = middleName;
-            Subject1 = subject1;
-            Subject2 = subject2;
-            Subject3 = subject3;
-            Certificate = certificate;
+            return $"{LastName} {FirstName[0]}.{MiddleName[0]}. : {TotalMark}";
         }
-
-
     }
 }
