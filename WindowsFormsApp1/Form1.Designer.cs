@@ -45,22 +45,24 @@ namespace WindowsFormsApp1
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.button4 = new System.Windows.Forms.Button();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button6 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView1
@@ -84,7 +86,7 @@ namespace WindowsFormsApp1
             this.listView1.Location = new System.Drawing.Point(30, 41);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(825, 700);
+            this.listView1.Size = new System.Drawing.Size(830, 783);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -182,27 +184,37 @@ namespace WindowsFormsApp1
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.radioButton5);
             this.groupBox2.Controls.Add(this.radioButton4);
             this.groupBox2.Controls.Add(this.radioButton3);
+            this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.radioButton2);
             this.groupBox2.Controls.Add(this.radioButton1);
             this.groupBox2.Location = new System.Drawing.Point(906, 244);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(264, 215);
+            this.groupBox2.Size = new System.Drawing.Size(264, 176);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Статистичне сортування";
+            this.groupBox2.Text = "Сортування зарахованих";
             // 
-            // button5
+            // radioButton4
             // 
-            this.button5.Location = new System.Drawing.Point(91, 171);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(94, 29);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Сортувати";
-            this.button5.UseVisualStyleBackColor = true;
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(150, 79);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(95, 44);
+            this.radioButton4.TabIndex = 3;
+            this.radioButton4.Text = "Іноземна\r\nмова";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(150, 49);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(76, 24);
+            this.radioButton3.TabIndex = 2;
+            this.radioButton3.Text = "Фізика";
+            this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // radioButton5
             // 
@@ -258,13 +270,45 @@ namespace WindowsFormsApp1
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(150, 39);
+            this.button4.Location = new System.Drawing.Point(91, 132);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(94, 29);
             this.button4.TabIndex = 0;
-            this.button4.Text = "Алфавіт";
+            this.button4.Text = "Сортувати";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(30, 92);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(106, 24);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.Text = "Українська";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(30, 49);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(114, 24);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Математика";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(91, 26);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(94, 32);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "Алфавіт";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // groupBox3
             // 
@@ -273,64 +317,80 @@ namespace WindowsFormsApp1
             this.groupBox3.Controls.Add(this.button4);
             this.groupBox3.Controls.Add(this.button8);
             this.groupBox3.Controls.Add(this.button7);
-            this.groupBox3.Location = new System.Drawing.Point(906, 491);
+            this.groupBox3.Location = new System.Drawing.Point(906, 567);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(264, 203);
-            this.groupBox3.TabIndex = 6;
+            this.groupBox3.Size = new System.Drawing.Size(264, 189);
+            this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Сортовані вибірки";
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(150, 88);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(94, 29);
-            this.button6.TabIndex = 3;
-            this.button6.Text = "Квота";
-            this.button6.UseVisualStyleBackColor = true;
+            this.groupBox3.Text = "Список зарахованих";
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(91, 138);
+            this.button9.Location = new System.Drawing.Point(91, 133);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(94, 29);
             this.button9.TabIndex = 2;
             this.button9.Text = "Загальний";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(30, 88);
+            this.button8.Location = new System.Drawing.Point(91, 88);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(94, 29);
             this.button8.TabIndex = 1;
             this.button8.Text = "Контракт";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(30, 39);
+            this.button7.Location = new System.Drawing.Point(91, 41);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(94, 29);
             this.button7.TabIndex = 0;
             this.button7.Text = "Бюджет";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(906, 712);
+            this.button10.Location = new System.Drawing.Point(906, 780);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(264, 44);
-            this.button10.TabIndex = 7;
+            this.button10.TabIndex = 8;
             this.button10.Text = "Налаштування";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.button5);
+            this.groupBox4.Controls.Add(this.button6);
+            this.groupBox4.Location = new System.Drawing.Point(906, 436);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(264, 125);
+            this.groupBox4.TabIndex = 6;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Сортування всіх абітурієнтів";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(91, 80);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(94, 29);
+            this.button6.TabIndex = 1;
+            this.button6.Text = "Рейтинг";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1182, 768);
+            this.ClientSize = new System.Drawing.Size(1192, 833);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -343,6 +403,7 @@ namespace WindowsFormsApp1
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -372,11 +433,11 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button6;
     }
 }

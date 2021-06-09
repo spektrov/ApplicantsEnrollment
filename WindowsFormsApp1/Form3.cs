@@ -22,9 +22,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private void maskedTextBox2_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-        }
+       
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -37,7 +35,7 @@ namespace WindowsFormsApp1
             var rural  = numericUpDown7.Value;
             var coefCertificate = numericUpDown8.Value;
 
-            if (!Logic.ValidateCoefficient(coef1, coef2, coef3, coefCertificate))
+            if (!Constants.ValidateCoefficient(coef1, coef2, coef3, coefCertificate))
             {
                 MessageBox.Show("Сумма коефіцієнтів повинна дорівнювати 1(одиниці).",
                     "Помилка",
@@ -48,19 +46,30 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            Logic.Budget = budget;
-            Logic.Contract = contract;
-            Logic.Privilege = privilege;
-            Logic.Coefficient1 = coef1;
-            Logic.Coefficient2 = coef2;
-            Logic.Coefficient3 = coef3;
-            Logic.Coefficient4 = coefCertificate;
-            Logic.RuralCoefficient = rural;
+            if (!Constants.ValidatePrivilege(budget, privilege))
+            {
+                MessageBox.Show("Квотників не може бути більше за бюджетників.",
+                        "Помилка",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error,
+                        MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.DefaultDesktopOnly);
+                    return;
+            }
+
+            Constants.Budget = budget;
+            Constants.Contract = contract;
+            Constants.Privilege = privilege;
+            Constants.Coefficient1 = coef1;
+            Constants.Coefficient2 = coef2;
+            Constants.Coefficient3 = coef3;
+            Constants.Coefficient4 = coefCertificate;
+            Constants.RuralCoefficient = rural;
 
 
             Close();
             _form1.UpdateData();
-            Logic.SaveData();
+            Constants.SaveData();
         }
 
         private void Form3_FormClosing(Object sender, FormClosingEventArgs e)
@@ -70,19 +79,23 @@ namespace WindowsFormsApp1
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            numericUpDown1.Value = Logic.Budget;
-            numericUpDown2.Value = Logic.Contract;
-            numericUpDown3.Value = Logic.Privilege;
-            numericUpDown4.Value = Logic.Coefficient1;
-            numericUpDown5.Value = Logic.Coefficient2;
-            numericUpDown6.Value = Logic.Coefficient3;
-            numericUpDown7.Value = Logic.RuralCoefficient;
-            numericUpDown8.Value = Logic.Coefficient4;
+            numericUpDown1.Value = Constants.Budget;
+            numericUpDown2.Value = Constants.Contract;
+            numericUpDown3.Value = Constants.Privilege;
+            numericUpDown4.Value = Constants.Coefficient1;
+            numericUpDown5.Value = Constants.Coefficient2;
+            numericUpDown6.Value = Constants.Coefficient3;
+            numericUpDown7.Value = Constants.RuralCoefficient;
+            numericUpDown8.Value = Constants.Coefficient4;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void maskedTextBox2_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
         }
     }
 }

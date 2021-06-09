@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsApp1
 {
-    partial class Form4
+    partial class Form5
     {
         /// <summary>
         /// Required designer variable.
@@ -43,12 +43,14 @@ namespace WindowsFormsApp1
             this.columnHeader10 = new System.Windows.Forms.ColumnHeader();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listView11
             // 
             this.listView11.BackColor = System.Drawing.SystemColors.Window;
+            this.listView11.CheckBoxes = true;
             this.listView11.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader11,
             this.columnHeader1,
@@ -65,17 +67,17 @@ namespace WindowsFormsApp1
             this.listView11.GridLines = true;
             this.listView11.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView11.HideSelection = false;
-            this.listView11.Location = new System.Drawing.Point(12, 31);
+            this.listView11.Location = new System.Drawing.Point(44, 27);
             this.listView11.MultiSelect = false;
             this.listView11.Name = "listView11";
-            this.listView11.Size = new System.Drawing.Size(944, 391);
-            this.listView11.TabIndex = 1;
+            this.listView11.Size = new System.Drawing.Size(944, 225);
+            this.listView11.TabIndex = 2;
             this.listView11.UseCompatibleStateImageBehavior = false;
             this.listView11.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader11
             // 
-            this.columnHeader11.Text = "№";
+            this.columnHeader11.Text = "";
             this.columnHeader11.Width = 40;
             // 
             // columnHeader1
@@ -129,35 +131,55 @@ namespace WindowsFormsApp1
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(320, 448);
+            this.button1.Location = new System.Drawing.Point(351, 359);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 30);
-            this.button1.TabIndex = 2;
+            this.button1.Size = new System.Drawing.Size(122, 35);
+            this.button1.TabIndex = 3;
             this.button1.Text = "Зберегти";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(588, 448);
+            this.button2.Location = new System.Drawing.Point(558, 359);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(110, 30);
-            this.button2.TabIndex = 3;
+            this.button2.Size = new System.Drawing.Size(122, 35);
+            this.button2.TabIndex = 4;
             this.button2.Text = "Повернутися";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Form4
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(44, 295);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(404, 20);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Для вирішення конфлікту виберіть зі списку абітурієнтів:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(454, 295);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 20);
+            this.label2.TabIndex = 6;
+            // 
+            // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 509);
+            this.ClientSize = new System.Drawing.Size(1034, 429);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView11);
-            this.Name = "Form4";
-            this.Text = "Звіт";
+            this.Name = "Form5";
+            this.Text = "Вибір зарахованих";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -175,9 +197,9 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

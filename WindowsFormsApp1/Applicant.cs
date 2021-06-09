@@ -7,6 +7,9 @@ namespace WindowsFormsApp1
 {
     public class Applicant
     {
+        /// <summary>
+        /// Surname.
+        /// </summary>
         public string LastName { get; set; }
 
         public string FirstName { get; set; }

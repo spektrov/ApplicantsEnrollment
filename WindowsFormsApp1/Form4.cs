@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace WindowsFormsApp1
 {
@@ -25,16 +28,15 @@ namespace WindowsFormsApp1
             FormClosing += Form4_FormClosing;
 
             saveFileDialog1.Filter = @"Text files(*.txt)|*.txt|" +
-                                     @"Data (*.xml)|*.xml|" +
-                                     @"All files(*.*)|*.*";
+                                     @"Data (*.xml)|*.xml";
         }
 
         public void Upload()
         {
-            var i = 0;
+            var i = 1;
             foreach (var applicant in _listOfApplicants.Applicants)
             {
-                var listViewItem = new ListViewItem(new string[]
+                var listViewItem = new ListViewItem(new[]
                 {
                     i.ToString(),
                     $"{applicant.LastName} {applicant.FirstName[0]}.{applicant.MiddleName[0]}.",
@@ -43,10 +45,10 @@ namespace WindowsFormsApp1
                     applicant.Subject3.Mark.ToString(),
                     applicant.Certificate.ToString(),
                     applicant.AdditionalPoint.ToString(),
-                    applicant.RuralCoefficient ? "+" : "-",
-                    applicant.Privilege ? "+" : "-",
+                    applicant.RuralCoefficient ? "+" : "",
+                    applicant.Privilege ? "+" : "",
                     applicant.TotalMark.ToString(),
-                    applicant.OnlyBudget ? "Бюджет" : applicant.OnlyContract ? "Контракт" : "Б або К"
+                    applicant.Contract ? "Контракт" : applicant.Budget ? "Бюджет" : ""
                 });
 
                 listView11.Items.Add(listViewItem);
@@ -58,20 +60,65 @@ namespace WindowsFormsApp1
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
-            // получаем выбранный файл
+
             string filename = saveFileDialog1.FileName;
-            // сохраняем текст в файл
 
-            var length = _listOfApplicants.Applicants.Count;
-            var str = new string[length];
-
-            for (int i = 0; i < length; i++)
+            if (filename.Split(".")[^1] == "txt")
             {
-                str[i] = _listOfApplicants.Applicants[i].ToString();
+                var length = _listOfApplicants.Applicants.Count;
+                var str = new string[length];
+
+                for (int i = 0; i < length; i++)
+                {
+                    str[i] = _listOfApplicants.Applicants[i].ToString();
+                }
+
+                try
+                {
+                    System.IO.File.WriteAllLines(filename, str, Encoding.UTF8);
+                    MessageBox.Show("Файл збережен",
+                        "Успіх",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    Close();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Помилка");
+                }
             }
 
-            System.IO.File.WriteAllLines(filename, str, Encoding.UTF8);
-            MessageBox.Show("Файл сохранен");
+            else if (filename.Split(".")[^1] == "xml")
+            {
+                var xmlFormatter = new XmlSerializer(typeof(List<Applicant>));
+
+                try
+                {
+                    using (var file = new FileStream(filename, FileMode.Create))
+                    {
+                        xmlFormatter.Serialize(file, _listOfApplicants.Applicants);
+                    }
+
+                    MessageBox.Show("Файл збережен",
+                        "Успіх",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    Close();
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Помилка");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Виберіть текстовий формат *.txt або\n" +
+                                "формат *xml для публікації даних",
+                    "Увага",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

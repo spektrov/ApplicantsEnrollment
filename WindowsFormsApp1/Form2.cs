@@ -29,8 +29,6 @@ namespace WindowsFormsApp1
             _form1.Enabled = true;
         }
 
-        
-
         private void button2_Click(object sender, EventArgs e)
         {
             Close();
@@ -49,14 +47,14 @@ namespace WindowsFormsApp1
             var subject3 = radioButton1.Checked ?
                 new Subject(radioButton1.Text, mark3) : new Subject(radioButton2.Text, mark3);
             var rural = checkBox1.Checked;
-            var privilege = checkBox1.Checked;
+            var privilege = checkBox2.Checked;
             var onlyBudget = radioButton3.Checked;
             var onlyContract = radioButton5.Checked;
 
             if (!_listOfApplicants.ValidateNewApplicant(lastName, firstName, middleName))
             {
-                MessageBox.Show("Введены неверные или неполные данные",
-                    "Ошибка",
+                MessageBox.Show("Введені неповні або невірні дані",
+                    "Помилка",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error,
                     MessageBoxDefaultButton.Button1,
@@ -116,7 +114,6 @@ namespace WindowsFormsApp1
                 radioButton5.Checked = _listOfApplicants.Applicants[_index].OnlyContract;
                 radioButton4.Checked = _listOfApplicants.Applicants[_index].OnlyBudget == false &&
                                        _listOfApplicants.Applicants[_index].OnlyContract == false;
-
 
                 var subject3 = _listOfApplicants.Applicants[_index].Subject3.Name;
                 if (subject3 == radioButton1.Text)
