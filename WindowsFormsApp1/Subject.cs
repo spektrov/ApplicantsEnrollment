@@ -1,18 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace WindowsFormsApp1
+﻿namespace WindowsFormsApp1
 {
-    class Subject
+    /// <summary>
+    /// Class represents one subject
+    /// that can be used as a applicant mark.
+    /// </summary>
+    public class Subject
     {
-        public string Name { get; set; }
-        public double Mark { get; set; }
 
-        public Subject(string name, double mark)
+        public Subject(string name, decimal mark)
         {
             Name = name;
             Mark = mark;
         }
+
+        // For serialization.
+        public Subject() { }
+
+        /// <summary>
+        /// Name of the subject.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Mark received on this subject.
+        /// </summary>
+        public decimal Mark { get; set; }
     }
 }
